@@ -1,0 +1,8 @@
+  <section>
+    <h2>Gyros pitában</h2>
+    <div class="cards-row">
+      @for(pitas of categoryPita(); track pitas){
+        <app-item-card [item]="pitas" (add)="onAdd($event)" (view)="onView($event)"></app-item-card>
+      }
+    </div>
+  </section>

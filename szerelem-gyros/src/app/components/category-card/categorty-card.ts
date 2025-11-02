@@ -1,22 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { Product } from '../../models/product';
+import { Product } from '@models/product';
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-category-card',
   standalone: true,
-  templateUrl: './card.html',
-  styleUrls: ['./card.css'],
+  templateUrl: './categorty-card.html',
+  styleUrls: ['./categorty-card.css'],
   imports: [MatCardModule, MatButtonModule],
 })
-export class Card {
+export class CategoryCard {
   @Input() item?: Product;
   @Input() fallbackImg: string = 'assets/images/placeholder.jpg';
+  @Input() targetId?: string;
 
-  @Output() view = new EventEmitter<Product | undefined>();
-  @Output() add = new EventEmitter<Product | undefined>();
+  @Output() navigate = new EventEmitter<string|undefined>();
 
-  onView() { this.view.emit(this.item); }
-  onAdd()  { this.add.emit(this.item); }
+  onNavigate() { this.navigate.emit(this.targetId); }
 }

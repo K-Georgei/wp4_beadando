@@ -1,0 +1,8 @@
+<section class="box-category">
+    <h2>Gyros tálak</h2>
+    <div class="cards-row">
+      @for(boxes of categoryBox(); track boxes){
+        <app-item-card [item]="boxes" (add)="onAdd($event)" (view)="onView($event)"></app-item-card>
+      }
+    </div>
+  </section>
