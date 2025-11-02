@@ -1,6 +1,6 @@
-<router-outlet></router-outlet>
-
-@if (menu(); as m) {
+<app-navigation>
+  <router-outlet></router-outlet>
+  @if (menu(); as m) {
   <div>
     <h3>Húsok</h3>
     <ul>
@@ -28,3 +28,6 @@
   (add)="onAdd($event)"
   (view)="onView($event)">
 </app-card>
+
+</app-navigation>
+

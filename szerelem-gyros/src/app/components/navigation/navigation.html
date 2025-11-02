@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container" hasBackdrop="true">
+  <mat-sidenav #drawer mode="side" class="app-sidenav">
+    <nav class="links">
+      <button mat-button routerLink="/">
+        <mat-icon fontIcon="fastfood"></mat-icon>
+        Gyrosok
+      </button>
+      <button mat-button routerLink="/builder">
+        <mat-icon fontIcon="kebab_dining"></mat-icon>
+        Készítsd el a sajátod
+      </button>
+      <button mat-button routerLink="/cart">
+        <mat-icon fontIcon="shopping_cart"></mat-icon>
+        Kosár
+      </button>
+    </nav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="app-toolbar">
+      <button mat-icon-button (click)="toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Szerelem Gyros</span>
+    </mat-toolbar>
+
+    <!-- a komponensbe beszúrt tartalom (pl. router-outlet) itt lesz -->
+    <div class="page-content">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,18 +1,19 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Card } from './card/card';
-import { Product } from './product';
+import { Card } from './components/card/card';
+import { Product } from './models/product';
 import { CommonModule } from '@angular/common';
-import { Loader } from './loader';
-import { Menu } from './product';
+import { Loader } from './core/loader';
+import { Menu } from './models/product';
+import {Navigation} from './components/navigation/navigation';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   standalone: true,
-  imports: [RouterOutlet, Card, CommonModule],
-  styleUrl: './app.css',
+  imports: [RouterOutlet, Card, CommonModule, Navigation],
+  styleUrls: ['./app.css'],
 })
 
 export class App {

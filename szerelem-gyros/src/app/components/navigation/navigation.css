@@ -1,0 +1,27 @@
+.sidenav-container {
+  height: 100vh; /* teljes magasság, hogy a drawer az egész oldalt tolja */
+}
+
+.app-sidenav {
+  width: 240px;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    height: calc(100vh - 64px - 32px); /* teljes magasság mínusz toolbar és margók */
+    width: 200px;
+    padding: 16px;
+}
+
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.page-content {
+  padding: 16px;
+}
