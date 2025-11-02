@@ -7,11 +7,12 @@ import { CategoryCard } from '@app/components/category-card/categorty-card';
 import { BoxCategList } from '@components/box-categ-list/box-categ-list';
 import { PitaCategList } from '@components/pita-categ-list/pita-categ-list';
 import { TortillaCategList } from '@components/tortilla-categ-list/tortilla-categ-list';
+import { SearchAndFilter } from '@app/components/search-and-filter/search-and-filter';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,CategoryCard,BoxCategList,PitaCategList,TortillaCategList],
+  imports: [CommonModule,CategoryCard,BoxCategList,PitaCategList,TortillaCategList,SearchAndFilter],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -30,16 +31,6 @@ export class Home {
   categoryCardTortilla: Product={
     title: 'Gyros Tortillában',
     img: 'assets/images/tortilla-images/category.png',
-  }
-
-  selectMeat(name: string){
-    /*this.product = {
-      id: Date.now(),
-      title: name + ' gyros',
-      description: 'Finom ' + name + ' gyros, házi pitában.',
-      img: 'assets/images/placeholder.jpg',
-      price: 1290,
-    }*/
   }
 
   scrollTo(targetId?:string){

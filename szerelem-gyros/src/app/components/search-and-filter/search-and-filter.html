@@ -1,0 +1,25 @@
+<div class="search-and-filter-container d-flex flex-column p-3">
+  <div class="d-flex flex-nowrap align-items-baseline gap-2">
+    <mat-form-field class="search-input flex-fill me-2" appearance="fill">
+      <mat-label>Keresés</mat-label>
+      <input id="search-bar" matInput type="search" [(ngModel)]="value" />
+      @if (value) {
+      <button mat-icon-button matSuffix aria-label="Clear" (click)="value = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+
+    <button id="search-button" mat-icon-button class="btn btn-outline-secondary" aria-label="Search" (click)="search()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+
+  <div class="filters-container d-block w-100 mt-2">
+    <mat-chip-listbox aria-label="Gyros selection" class="d-flex flex-wrap gap-2">
+      @for (serving of servingTypes; track serving) {
+      <mat-chip-option [value]="serving">{{ serving }}</mat-chip-option>
+      }
+    </mat-chip-listbox>
+  </div>
+</div>

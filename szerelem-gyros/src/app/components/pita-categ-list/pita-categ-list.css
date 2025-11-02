@@ -1,0 +1,22 @@
+/* ...existing code... */
+.pita-category{
+    display: block;
+    padding: 8px;
+    /* ...existing code... */
+}
+
+/* új: grid layout a kártyáknak */
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* cellák min 220px, aztán egyenlően oszlanak el */
+  gap: 16px;
+  align-items: start;
+}
+
+/* ha az item-card nem blokk, kényszerítsd, hogy kitöltse a cellát */
+.cards-row app-item-card,
+.cards-row app-item-card *:first-child {
+  width: 100%;
+  box-sizing: border-box;
+}
+/* ...existing code... */

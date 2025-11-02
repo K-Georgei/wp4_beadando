@@ -1,31 +1,32 @@
 <mat-sidenav-container class="sidenav-container" hasBackdrop="true">
-  <mat-sidenav #drawer mode="push" class="app-sidenav">
-    <nav class="links">
-      <button mat-button routerLink="/">
+  <mat-sidenav #drawer mode="push" class="app-sidenav" style="width:240px;">
+    <nav class="d-flex flex-column gap-3 mt-4 p-3" style="min-height: calc(100vh - 64px - 32px);">
+      <button mat-button routerLink="/" class="d-flex align-items-center">
         <mat-icon fontIcon="fastfood"></mat-icon>
-        Menük
+        <span class="ms-2">Menük</span>
       </button>
-      <button mat-button routerLink="/gyros-maker">
+
+      <button mat-button routerLink="/gyros-maker" class="d-flex align-items-center">
         <mat-icon fontIcon="kebab_dining"></mat-icon>
-        Készítsd el a sajátod
+        <span class="ms-2">Készítsd el a sajátod</span>
       </button>
-      <button mat-button routerLink="/cart">
+
+      <button mat-button routerLink="/cart" class="d-flex align-items-center">
         <mat-icon fontIcon="shopping_cart"></mat-icon>
-        Kosár
+        <span class="ms-2">Kosár</span>
       </button>
     </nav>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary" class="app-toolbar">
+    <mat-toolbar color="primary" class="sticky-top">
       <button mat-icon-button (click)="toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Szerelem Gyros - </span><!--<span>{{currentPage}}</span>-->
+      <span class="ms-2">Szerelem Gyros - {{currentPage}}</span>
     </mat-toolbar>
 
-    <!-- a komponensbe beszúrt tartalom (pl. router-outlet) itt lesz -->
-    <div class="page-content">
+    <div class="page-content p-3">
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>

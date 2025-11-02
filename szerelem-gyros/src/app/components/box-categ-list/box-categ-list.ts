@@ -13,14 +13,14 @@ import { ItemCard } from '@app/components/item-card/item-card';
 export class BoxCategList {
   categoryBox = signal<Product[]>([]);
   
-  categoryTortilla = signal<Product[]>([]);
-
    constructor(){
-      this.categoryBox.set(generateGyros('Gyros tálak', [
-        'Classic',
-        'Extra szósz',
-        'Csípős'
-      ], { basePrice: 1500, img: 'assets/images/gyros_tal.jpg' }));
+      this.categoryBox.set(generateGyros('Gyros tál', [
+        'Klasszikus',
+        'Amerikai',
+        'Ázsiai',
+        'Görög',
+        'Mexikói'
+      ], { basePrice: 1500, img: 'assets/images/box-images/category.png' }));
     }
 
   onAdd(p?: Product) {

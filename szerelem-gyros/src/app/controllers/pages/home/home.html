@@ -1,4 +1,4 @@
-<div class="category-cards">
+<div class="d-flex justify-content-center gap-3">
    <app-category-card
         [item]="categoryCardBox"
         [targetId]="'box-section'"
@@ -16,37 +16,17 @@
     </app-category-card>
 </div>
 
-<div class="categories"> 
-  <app-box-categ-list id="box-section"></app-box-categ-list>
-  <app-pita-categ-list id="pita-section"></app-pita-categ-list>
-  <app-tortilla-categ-list id="tortilla-section"></app-tortilla-categ-list>
+<div>
+  <app-search-and-filter></app-search-and-filter>
 </div>
 
-
-<!--
-@if (menu(); as m) {
-  <div>
-    <h3>Húsok</h3>
-    <ul>
-      @for (meat of m.ingredients.meats; track meat) {
-        <li>
-          {{ meat }} <button (click)="selectMeat(meat)">Választ</button>
-        </li>
-      }
-    </ul>
-
-    <h3>Köretek</h3>
-    <ul>
-      @for (s of m.sides; track s) {
-        <li>{{ s }}</li>
-      }
-    </ul>
-  </div>
-} @else {
-  <p>Menü betöltése...</p>
-}-->
-
-
-
-
-
+<div> 
+  <h2>Gyros tálak</h2>
+  <app-box-categ-list id="box-section"></app-box-categ-list>
+  
+  <h2>Gyros pitában</h2>
+  <app-pita-categ-list id="pita-section"></app-pita-categ-list>
+  
+  <h2>Gyros tortillában</h2>
+  <app-tortilla-categ-list id="tortilla-section"></app-tortilla-categ-list>
+</div>

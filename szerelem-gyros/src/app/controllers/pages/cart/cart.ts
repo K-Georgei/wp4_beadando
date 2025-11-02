@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './cart.css',
 })
 export class Cart {
-
 }

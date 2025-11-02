@@ -10,5 +10,4 @@ import { Component } from '@angular/core';
   styleUrl: './gyros-maker.css',
 })
 export class GyrosMaker {
-
 }

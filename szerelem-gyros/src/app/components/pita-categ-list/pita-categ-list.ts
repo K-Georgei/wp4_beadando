@@ -19,7 +19,7 @@ export class PitaCategList {
         'Classic',
         'Extra szósz',
         'Csípős'
-      ], { basePrice: 1500, img: 'assets/images/gyros_pita.jpg' }));
+      ], { basePrice: 1500, img: 'assets/images/pita-images/category.png' }));
     }
 
   onAdd(p?: Product) {

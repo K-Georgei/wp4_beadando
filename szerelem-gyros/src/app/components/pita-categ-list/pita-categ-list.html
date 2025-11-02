@@ -1,6 +1,5 @@
   <section>
-    <h2>Gyros pitában</h2>
-    <div class="cards-row">
+    <div class="d-flex flex-row flex-wrap justify-content-start gap-4">
       @for(pitas of categoryPita(); track pitas){
         <app-item-card [item]="pitas" (add)="onAdd($event)" (view)="onView($event)"></app-item-card>
       }

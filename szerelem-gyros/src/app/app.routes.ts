@@ -5,8 +5,8 @@ import { Cart } from './controllers/pages/cart/cart';
 import { NotFoundError } from 'rxjs';
 
 export const routes: Routes = [
-    {path: '', component: Home},
-    {path: 'gyros-maker', component: GyrosMaker},
-    {path: 'cart', component: Cart},
+    {path: '', component: Home, data: {title: 'Menük'}},
+    {path: 'gyros-maker', component: GyrosMaker, data: {title: 'Gyros készítő'}},
+    {path: 'cart', component: Cart, data: {title: 'Kosár'}},
     {path: '**', component: NotFoundError},
 ];

@@ -19,7 +19,7 @@ export class TortillaCategList {
         'Classic',
         'Extra szósz',
         'Csípős'
-      ], { basePrice: 1500, img: 'assets/images/gyros_tort.jpg' }));
+      ], { basePrice: 1500, img: 'assets/images/tortilla-images/category.png' }));
     }
 
   onAdd(p?: Product) {
