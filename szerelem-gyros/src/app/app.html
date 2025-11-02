@@ -1,0 +1,30 @@
+<router-outlet></router-outlet>
+
+@if (menu(); as m) {
+  <div>
+    <h3>Húsok</h3>
+    <ul>
+      @for (meat of m.ingredients.meats; track meat) {
+        <li>
+          {{ meat }} <button (click)="selectMeat(meat)">Választ</button>
+        </li>
+      }
+    </ul>
+
+    <h3>Köretek</h3>
+    <ul>
+      @for (s of m.sides; track s) {
+        <li>{{ s }}</li>
+      }
+    </ul>
+  </div>
+} @else {
+  <p>Menü betöltése...</p>
+}
+
+<app-card
+  [item]="product"
+  [fallbackImg]="'assets/images/placeholder.jpg'"
+  (add)="onAdd($event)"
+  (view)="onView($event)">
+</app-card>

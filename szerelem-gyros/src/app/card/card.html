@@ -1,0 +1,18 @@
+<ng-content>
+   <mat-card class="example-card" appearance="filled">
+        <mat-card-header>
+            <mat-card-title-group class="title-group">
+                <mat-card-title>{{ item?.title }}</mat-card-title>
+            </mat-card-title-group>
+        </mat-card-header>
+        <img mat-card-image [src]="item?.img || fallbackImg" alt="{{ item?.title }}" />
+        <mat-card-content>
+            <p id="description">{{ item?.description }}</p>
+            <p id="price">{{ item?.price ? (item?.price + ' Ft') : ''}}</p>
+        </mat-card-content>
+        <mat-card-actions class="action-buttons">
+            <button mat-button (click)="onView()">Megtekint</button>
+            <button mat-button (click)="onAdd()">Kosárba</button>
+        </mat-card-actions>
+   </mat-card>
+</ng-content>

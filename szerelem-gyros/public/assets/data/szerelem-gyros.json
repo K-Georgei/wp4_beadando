@@ -1,0 +1,86 @@
+{
+    "ingredients":{
+        "meats":[
+            "Csirke",
+            "Marha",
+            "Sertés",
+            "Pulyka",
+            "Bárány"
+        ],
+        "vegetables":[
+            "Paradicsom",
+            "Uborka",
+            "Vöröshagyma",
+            "Lilahagyma",
+            "Saláta",
+            "Káposzta",
+            "Paprika",
+            "Oliva"
+        ],
+        "sauces":[
+            "Fokhagymás",
+            "Tzatziki",
+            "Csípős",
+            "Joghurtos",
+            "Sajtos"
+        ],
+        "extras":[
+            "Sajt",
+            "Bacon",
+            "Jalapeno",
+            "Avokádó",
+            "Tojás"
+        ]
+    },
+    
+    "serving":[
+            "Pita",
+            "Tortilla",
+            "Tál"
+    ],
+
+    "drinks":{
+        "non-alcoholic":{
+            "flat":[
+                "Szénsavmentes ásványvíz",
+                "Almalé",
+                "Narancslé",
+                "Őszibaracklé",
+                "Szőlőlé",
+                "Ice Tea"
+            ],
+            "carbonated":[
+                "Szénsavas ásványvíz",
+                "Coca-Cola",
+                "Fanta",
+                "Sprite",
+                "Kinley Ginger Ale",
+                "Kinley Tonic Water"
+            ]
+        },
+        "alcoholic":{
+            "flat":[
+                "Vörösbor",
+                "Fehérbor",
+                "Whisky"
+            ],
+            "carbonated":[
+                "Sör",
+                "Cider",
+                "Pezsgő"
+            ]
+        }   
+    },
+    "sides":[
+        "Hasábburgonya",
+        "Steakburgonya",
+        "Hagymakarika",
+        "Rizs",
+        "Saláta",
+        "Coleslaw",
+        "Kukorica",
+        "Mac and Cheese"
+
+    ]
+
+}
