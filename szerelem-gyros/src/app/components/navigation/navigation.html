@@ -18,15 +18,15 @@
     </nav>
   </mat-sidenav>
 
-  <mat-sidenav-content class="overflow-hidden">
-    <mat-toolbar class="sticky-top">
+  <mat-sidenav-content>
+    <mat-toolbar>
       <button mat-icon-button (click)="toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <span class="ms-2">Szerelem Gyros - {{currentPage}}</span>
     </mat-toolbar>
 
-    <div class="page-content p-3">
+    <div class="page-content p-3 overflow-auto" style="height: calc(100vh - 64px);">
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>

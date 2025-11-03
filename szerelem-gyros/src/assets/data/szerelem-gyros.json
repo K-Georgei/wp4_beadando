@@ -1,86 +1,69 @@
 {
-    "ingredients":{
-        "meats":[
-            "Csirke",
-            "Marha",
-            "Sertés",
-            "Pulyka",
-            "Bárány"
+    "ingredients": {
+        "meats": [
+            { "name": "Csirke", "price": 1300 },
+            { "name": "Marha", "price": 1700 },
+            { "name": "Sertés", "price": 1300 },
+            { "name": "Pulyka", "price": 1450 },
+            { "name": "Bárány", "price": 2300 }
         ],
-        "vegetables":[
-            "Paradicsom",
-            "Uborka",
-            "Vöröshagyma",
-            "Lilahagyma",
-            "Saláta",
-            "Káposzta",
-            "Paprika",
-            "Oliva"
+        "vegetables": [
+            { "name": "Paradicsom", "price": 100 },
+            { "name": "Uborka", "price": 100 },
+            { "name": "Vöröshagyma", "price": 50 },
+            { "name": "Lilahagyma", "price": 50 },
+            { "name": "Saláta", "price": 100 },
+            { "name": "Káposzta", "price": 100 },
+            { "name": "Paprika", "price": 150 },
+            { "name": "Oliva", "price": 200 }
         ],
-        "sauces":[
-            "Fokhagymás",
-            "Tzatziki",
-            "Csípős",
-            "Joghurtos",
-            "Sajtos"
+        "sauces": [
+            { "name": "Fokhagymás", "price": 150 },
+            { "name": "Tzatziki", "price": 150 },
+            { "name": "Csípős", "price": 150 },
+            { "name": "Joghurtos", "price": 150 },
+            { "name": "Sajtos", "price": 200 }
         ],
-        "extras":[
-            "Sajt",
-            "Bacon",
-            "Jalapeno",
-            "Avokádó",
-            "Tojás"
+        "extras": [
+            { "name": "Sajt", "price": 250 },
+            { "name": "Bacon", "price": 300 },
+            { "name": "Jalapeno", "price": 300 },
+            { "name": "Avokádó", "price": 350 }
         ]
     },
-    
-    "serving":[
-            "Pita",
-            "Tortilla",
-            "Tál"
+    "serving": [
+        { "name": "Pita", "price": 500 },
+        { "name": "Tortilla", "price": 400 },
+        { "name": "Tál", "price": 600 }
     ],
-
-    "drinks":{
-        "non-alcoholic":{
-            "flat":[
-                "Szénsavmentes ásványvíz",
-                "Almalé",
-                "Narancslé",
-                "Őszibaracklé",
-                "Szőlőlé",
-                "Ice Tea"
+    "drinks": {
+        "non-alcoholic": {
+            "flat": [
+                { "name": "Szénsavmentes ásványvíz", "price": 400 },
+                { "name": "Almalé", "price": 450 },
+                { "name": "Narancslé", "price": 450 },
+                { "name": "Őszibaracklé", "price": 450 },
+                { "name": "Szőlőlé", "price": 450 },
+                { "name": "Ice Tea", "price": 500 }
             ],
-            "carbonated":[
-                "Szénsavas ásványvíz",
-                "Coca-Cola",
-                "Fanta",
-                "Sprite",
-                "Kinley Ginger Ale",
-                "Kinley Tonic Water"
+            "carbonated": [
+                { "name": "Szénsavas ásványvíz", "price": 400 },
+                { "name": "Coca-Cola", "price": 500 },
+                { "name": "Fanta", "price": 500 },
+                { "name": "Sprite", "price": 500 },
+                { "name": "Kinley Ginger Ale", "price": 550 },
+                { "name": "Kinley Tonic Water", "price": 550 }
             ]
-        },
-        "alcoholic":{
-            "flat":[
-                "Vörösbor",
-                "Fehérbor",
-                "Whisky"
-            ],
-            "carbonated":[
-                "Sör",
-                "Cider",
-                "Pezsgő"
-            ]
-        }   
+        }
     },
-    "sides":[
-        "Hasábburgonya",
-        "Steakburgonya",
-        "Hagymakarika",
-        "Rizs",
-        "Saláta",
-        "Coleslaw",
-        "Kukorica",
-        "Mac and Cheese"
-
+    "sides": [
+        { "name": "Hasábburgonya", "price": 600 },
+        { "name": "Steakburgonya", "price": 700 },
+        { "name": "Hagymakarika", "price": 750 },
+        { "name": "Rizs", "price": 500 },
+        { "name": "Saláta", "price": 400 },
+        { "name": "Coleslaw", "price": 550 },
+        { "name": "Kukorica", "price": 400 },
+        { "name": "Mac and Cheese", "price": 800 }
     ]
-
 }

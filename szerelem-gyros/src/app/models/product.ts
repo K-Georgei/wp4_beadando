@@ -6,9 +6,14 @@ export interface Product {
     price?: number;
 }
 
+export interface MenuItem {
+    name: string;
+    price: number;
+}
+
 export interface DrinksGroup{
-    flat: string[];
-    carbonated: string[];
+    flat: MenuItem[];
+    carbonated: MenuItem[];
 }
 
 export interface Drinks{
@@ -17,15 +22,15 @@ export interface Drinks{
 }
 
 export interface Ingredients{
-    meats: string[];
-    vegetables: string[];
-    sauces: string[];
-    extras: string[];
+    meats: MenuItem[];
+    vegetables: MenuItem[];
+    sauces: MenuItem[];
+    extras: MenuItem[];
 }
 
 export interface Menu{
     ingredients: Ingredients;
-    serving: string[];
+    serving: MenuItem[];
     drinks: Drinks;
-    sides: string[];
+    sides: MenuItem[];
 }

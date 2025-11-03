@@ -14,9 +14,7 @@ export class ItemCard {
   @Input() item?: Product;
   @Input() fallbackImg: string = 'assets/images/placeholder.jpg';
 
-  @Output() view = new EventEmitter<Product | undefined>();
   @Output() add = new EventEmitter<Product | undefined>();
 
-  onView() { this.view.emit(this.item); }
   onAdd()  { this.add.emit(this.item); }
 }

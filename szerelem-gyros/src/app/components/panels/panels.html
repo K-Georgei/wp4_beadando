@@ -1,0 +1,76 @@
+@if (menuData(); as data) {
+  <mat-accordion multi class="mat-expansion-panel">
+    <!-- Meats -->
+    <mat-expansion-panel [expanded]="true" class="mat-expansion-panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Húsok</mat-panel-title>
+        <mat-panel-description>Egy jó gyros alapja mindig a hús.</mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-radio-group class="d-flex flex-column gap-2 pt-2" [(ngModel)]="selectedMeat">
+        @for (meat of data.ingredients.meats; track meat.name) {
+          <mat-radio-button [value]="meat">{{ meat.name }} (+{{ meat.price }} Ft)</mat-radio-button>
+        }
+      </mat-radio-group>
+    </mat-expansion-panel>
+
+    <!-- Veggies -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Zöldségek</mat-panel-title>
+        <mat-panel-description>Friss zöldségek.</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="d-flex flex-column gap-2 pt-2">
+        @for (veg of data.ingredients.vegetables; track veg.name) {
+          <mat-checkbox [(ngModel)]="selectedVeggies[veg.name]">{{ veg.name }} (+{{ veg.price }} Ft)</mat-checkbox>
+        }
+      </div>
+    </mat-expansion-panel>
+
+    <!-- Sauces -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Szószok</mat-panel-title>
+        <mat-panel-description>Ízletes szószok.</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="d-flex flex-column gap-2 pt-2">
+        @for (sauce of data.ingredients.sauces; track sauce.name) {
+          <mat-checkbox [(ngModel)]="selectedSauces[sauce.name]">{{ sauce.name }} (+{{ sauce.price }} Ft)</mat-checkbox>
+        }
+      </div>
+    </mat-expansion-panel>
+
+    <!-- Serving Panel -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Tálalás</mat-panel-title>
+        <mat-panel-description>Hogyan kéred?</mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-radio-group class="d-flex flex-column gap-2 pt-2" [(ngModel)]="selectedServing">
+        @for (serve of data.serving; track serve.name) {
+          <mat-radio-button [value]="serve">{{ serve.name }} (+{{ serve.price }} Ft)</mat-radio-button>
+        }
+      </mat-radio-group>
+    </mat-expansion-panel>
+
+    <!-- Sides Panel -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Köretek</mat-panel-title>
+        <mat-panel-description>Válassz köretet</mat-panel-description>
+      </mat-expansion-panel-header>
+      <section class="d-flex flex-column gap-2 pt-2">
+        @for (side of data.sides; track side.name) {
+          <mat-checkbox [(ngModel)]="selectedSides[side.name]">{{ side.name }} (+{{ side.price }} Ft)</mat-checkbox>
+        }
+      </section>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+  <div class="d-flex justify-content-end mt-3">
+    <button mat-raised-button color="primary" (click)="addToCart()">Kosárba</button>
+  </div>
+
+} @else {
+  <p>Menü betöltése...</p>
+}

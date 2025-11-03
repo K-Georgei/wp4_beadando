@@ -4,16 +4,16 @@ import { CommonModule } from '@angular/common';
 import { Menu } from '@models/product';
 import { Product } from '@models/product';
 import { CategoryCard } from '@app/components/category-card/categorty-card';
-import { BoxCategList } from '@components/box-categ-list/box-categ-list';
-import { PitaCategList } from '@components/pita-categ-list/pita-categ-list';
-import { TortillaCategList } from '@components/tortilla-categ-list/tortilla-categ-list';
+import { BoxCategListComponent } from '@components/box-categ-list/box-categ-list';
+import { PitaCategListComponent } from '@components/pita-categ-list/pita-categ-list';
+import { TortillaCategListComponent } from '@components/tortilla-categ-list/tortilla-categ-list';
 import { SearchAndFilter } from '@app/components/search-and-filter/search-and-filter';
 import { Landing } from '@app/components/landing/landing';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,CategoryCard,BoxCategList,PitaCategList,TortillaCategList,SearchAndFilter,Landing],
+  imports: [CommonModule,CategoryCard,BoxCategListComponent,PitaCategListComponent,TortillaCategListComponent,SearchAndFilter,Landing],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

@@ -1,8 +1,8 @@
-<section>
+<section class="box-category">
     <div class="row g-3">
-      @for(tortilas of categoryTortilla(); track tortilas){
+      @for(boxes of categoryTortilla(); track boxes){
         <div class="col-12 col-md-6 col-lg-4">
-          <app-item-card [item]="tortilas" (add)="onAdd($event)" (view)="onView($event)"></app-item-card>
+          <app-item-card [item]="boxes" (add)="onAdd(boxes)"></app-item-card>
         </div>
       }
     </div>

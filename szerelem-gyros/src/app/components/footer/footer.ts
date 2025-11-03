@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { MatToolbar } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [MatToolbar, MatIconModule],
+  imports: [MatIconModule, MatDivider],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

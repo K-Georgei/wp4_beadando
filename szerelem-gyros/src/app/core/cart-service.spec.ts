@@ -1,19 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { LoaderService } from './loader';
 
+import { CartService } from '@core/cart-service';
 
-
-describe('LoaderService', () => {
-  let service: LoaderService;
+describe('CartService', () => {
+  let service: CartService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LoaderService);
+    service = TestBed.inject(CartService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });
-
-
