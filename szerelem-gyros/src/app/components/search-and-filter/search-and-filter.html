@@ -1,25 +1,32 @@
-<div class="search-and-filter-container d-flex flex-column p-3">
-  <div class="d-flex flex-nowrap align-items-baseline gap-2">
-    <mat-form-field class="search-input flex-fill me-2" appearance="fill">
-      <mat-label>Keresés</mat-label>
-      <input id="search-bar" matInput type="search" [(ngModel)]="value" />
-      @if (value) {
-      <button mat-icon-button matSuffix aria-label="Clear" (click)="value = ''">
-        <mat-icon>close</mat-icon>
-      </button>
-      }
-    </mat-form-field>
+<div class="search-filter-container p-3 p-md-4">
+  <mat-divider></mat-divider>
+  <h2 class="my-4 h2 text-center">Termék keresés és szűrés</h2>
+  <!-- Search Input -->
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Keresés a termékek között...</mat-label>
+    <mat-icon matPrefix>search</mat-icon>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchTermChange()"
+      placeholder="Pl. Csirke, gyrostál..."
+    />
+  </mat-form-field>
 
-    <button id="search-button" mat-icon-button class="btn btn-outline-secondary" aria-label="Search" (click)="search()">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
-
-  <div class="filters-container d-block w-100 mt-2">
-    <mat-chip-listbox aria-label="Gyros selection" class="d-flex flex-wrap gap-2">
-      @for (serving of servingTypes; track serving) {
-      <mat-chip-option [value]="serving">{{ serving }}</mat-chip-option>
+  <!-- Filter Chips -->
+  <div class="mt-2">
+    <h3 class="h6">Szűrők</h3>
+    <mat-chip-listbox multiple aria-label="Filter selection">
+      @for (filter of availableFilters; track filter) {
+      <mat-chip-option
+        (click)="onFilterSelectionChange(filter)"
+        [selected]="selectedFilters.has(filter)"
+      >
+        {{ filter }}
+      </mat-chip-option>
       }
     </mat-chip-listbox>
   </div>
+  <mat-divider class="my-4"></mat-divider>
 </div>

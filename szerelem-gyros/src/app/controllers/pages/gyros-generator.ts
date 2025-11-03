@@ -1,53 +1,55 @@
-import { Product, Menu, MenuItem } from '@models/product';
+import { Product, ProductVariant, Menu, MenuItem } from '@models/product';
 
-export interface GeneratorOptions {
-    img?: string;
+// Helper to find an item's price from the menu
+function findPrice(name: string, menu: Menu): number {
+  const allItems: MenuItem[] = [
+    ...menu.ingredients.meats,
+    ...menu.ingredients.vegetables,
+    ...menu.ingredients.sauces,
+    ...menu.ingredients.extras,
+    ...menu.serving,
+    ...menu.sides,
+  ];
+  const item = allItems.find(i => i.name === name);
+  return item ? item.price : 0;
 }
 
-export interface GyrosVariant {
-    name: string;
-    ingredients: string[]; // List of ingredient names
-    img?: string; // Add image property to the variant
-}
+export function generateGyros(
+  baseName: string,
+  variants: ProductVariant[],
+  menu: Menu
+): Product[] {
+  if (!menu) return [];
 
-// Helper function to find an item and its price from the menu
-function findMenuItem(name: string, menu: Menu): MenuItem | undefined {
-    const allItems: MenuItem[] = [
-        ...menu.ingredients.meats,
-        ...menu.ingredients.vegetables,
-        ...menu.ingredients.sauces,
-        ...menu.ingredients.extras,
-        ...menu.serving,
-        ...menu.sides
-    ];
-    return allItems.find(item => name.toLowerCase() === item.name.toLowerCase());
-}
+  return variants.map((variant, index) => {
+    const title = `${variant.name} ${baseName}`;
+    const price = variant.ingredients.reduce(
+      (sum, ingName) => sum + findPrice(ingName, menu),
+      0
+    );
 
-export function generateGyros(category: string, variants: GyrosVariant[], menu: Menu, opts: GeneratorOptions = {}): Product[] {
-    const defaultImg = opts.img ?? 'assets/images/placeholder.jpg';
+    // --- NEW LOGIC FOR COMBINING TAGS ---
+    // Use a Set to automatically handle duplicates
+    const combinedTags = new Set<string>();
 
-    return variants.map((variant, i) => {
-        let price = 0;
-        const descriptionItems: string[] = [];
+    // 1. Add all ingredients to the tags
+    variant.ingredients.forEach(ing => combinedTags.add(ing));
 
-        variant.ingredients.forEach(ingredientName => {
-            const menuItem = findMenuItem(ingredientName, menu);
-            if (menuItem) {
-                price += menuItem.price;
-                descriptionItems.push(menuItem.name);
-            }
-        });
+    // 2. Add all custom-defined tags
+    if (variant.tags) {
+      variant.tags.forEach(tag => combinedTags.add(tag));
+    }
+    // --- END OF NEW LOGIC ---
 
-        // Use the variant's specific image, or fall back to the default.
-        const img = variant.img ?? defaultImg;
-
-        return {
-            id: Date.now() + i,
-            title: `${category} - ${variant.name}`,
-            description: descriptionItems.join(', '),
-            img, // Use the determined image
-            price,
-            category
-        };
-    });
+    return {
+      id: index + 1, // Simple ID generation
+      title: title,
+      description: `Összetevők: ${variant.ingredients.join(', ')}.`,
+      price: price,
+      img: variant.img,
+      ingredients: variant.ingredients,
+      // Convert the Set back to an array for the final product
+      tags: Array.from(combinedTags),
+    };
+  });
 }

@@ -1,8 +1,14 @@
-<section class="box-category">
+<section class="pita-category">
     <div class="row g-3">
-      @for(boxes of categoryPita(); track boxes){
+      <!-- Use the signal 'products()' with the pipe -->
+      @for (product of products() | productFilter: searchTerm : filters; track product.id) {
         <div class="col-12 col-md-6 col-lg-4">
-          <app-item-card [item]="boxes" (add)="onAdd(boxes)"></app-item-card>
+          <app-item-card [item]="product" (add)="onAdd(product)"></app-item-card>
+        </div>
+      } @empty {
+        <!-- Show a message if no products match the filter -->
+        <div class="col-12">
+          <p class="text-center">Nincs a keresésnek megfelelő termék.</p>
         </div>
       }
     </div>

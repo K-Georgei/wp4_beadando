@@ -4,7 +4,17 @@ export interface Product {
     description?: string;
     img?: string;
     price?: number;
+    tags?: string[];
+    ingredients?: string[]; // Ensure ingredients are part of the final product
 }
+
+export interface ProductVariant {
+    name: string;
+    ingredients: string[];
+    img: string; // Make image required for consistency
+    tags?: string[];
+}
+
 
 export interface MenuItem {
     name: string;
@@ -14,11 +24,6 @@ export interface MenuItem {
 export interface DrinksGroup{
     flat: MenuItem[];
     carbonated: MenuItem[];
-}
-
-export interface Drinks{
-    non_alcoholic: DrinksGroup;
-    alcoholic: DrinksGroup;
 }
 
 export interface Ingredients{
@@ -31,6 +36,6 @@ export interface Ingredients{
 export interface Menu{
     ingredients: Ingredients;
     serving: MenuItem[];
-    drinks: Drinks;
+    drinks: DrinksGroup; // Use DrinksGroup directly
     sides: MenuItem[];
 }

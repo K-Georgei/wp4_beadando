@@ -37,24 +37,22 @@
         { "name": "Tál", "price": 600 }
     ],
     "drinks": {
-        "non-alcoholic": {
-            "flat": [
-                { "name": "Szénsavmentes ásványvíz", "price": 400 },
-                { "name": "Almalé", "price": 450 },
-                { "name": "Narancslé", "price": 450 },
-                { "name": "Őszibaracklé", "price": 450 },
-                { "name": "Szőlőlé", "price": 450 },
-                { "name": "Ice Tea", "price": 500 }
-            ],
-            "carbonated": [
-                { "name": "Szénsavas ásványvíz", "price": 400 },
-                { "name": "Coca-Cola", "price": 500 },
-                { "name": "Fanta", "price": 500 },
-                { "name": "Sprite", "price": 500 },
-                { "name": "Kinley Ginger Ale", "price": 550 },
-                { "name": "Kinley Tonic Water", "price": 550 }
-            ]
-        }
+        "flat": [
+            { "name": "Szénsavmentes ásványvíz", "price": 400 },
+            { "name": "Almalé", "price": 450 },
+            { "name": "Narancslé", "price": 450 },
+            { "name": "Őszibaracklé", "price": 450 },
+            { "name": "Szőlőlé", "price": 450 },
+            { "name": "Ice Tea", "price": 500 }
+        ],
+        "carbonated": [
+            { "name": "Szénsavas ásványvíz", "price": 400 },
+            { "name": "Coca-Cola", "price": 500 },
+            { "name": "Fanta", "price": 500 },
+            { "name": "Sprite", "price": 500 },
+            { "name": "Kinley Ginger Ale", "price": 550 },
+            { "name": "Kinley Tonic Water", "price": 550 }
+        ]
     },
     "sides": [
         { "name": "Hasábburgonya", "price": 600 },

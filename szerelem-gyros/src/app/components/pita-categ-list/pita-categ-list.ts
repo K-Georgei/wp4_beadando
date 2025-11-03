@@ -1,33 +1,55 @@
-import { Component, signal, inject, OnInit } from '@angular/core';
-import { Product, Menu } from '@models/product';
+import { Component, signal, inject, OnInit, Input } from '@angular/core';
+import { Product, Menu, ProductVariant } from '@models/product'; // Import ProductVariant
 import { CartService } from '@core/cart-service';
-import { generateGyros, GyrosVariant } from '@controllers/pages/gyros-generator';
+import { generateGyros } from '@controllers/pages/gyros-generator';
 import { ItemCard } from '@app/components/item-card/item-card';
 import { LoaderService } from '@app/core/loader';
 import { CommonModule } from '@angular/common';
+import { ProductFilterPipe } from '@app/pipes/product-filter-pipe';
 
 @Component({
   selector: 'app-pita-categ-list',
   standalone: true,
-  imports: [ItemCard, CommonModule],
+  imports: [ItemCard, CommonModule, ProductFilterPipe],
   templateUrl: './pita-categ-list.html',
-  styleUrl: './pita-categ-list.css',
+  styleUrls: ['./pita-categ-list.css'],
 })
 export class PitaCategListComponent implements OnInit {
-  categoryPita = signal<Product[]>([]);
+  // This signal will hold the dynamically generated products.
+  products = signal<Product[]>([]);
   private cartService = inject(CartService);
   private loaderService = inject(LoaderService);
 
+  // Inputs for search term and filters
+  @Input() searchTerm: string = '';
+  @Input() filters: string[] = [];
+
+  // The old hardcoded 'products' array has been removed.
+
   ngOnInit(): void {
     this.loaderService.getMenu().subscribe(menu => {
-      const gyrosPitaVariants: GyrosVariant[] = [
-        { name: 'Klasszikus', ingredients: ['Csirke', 'Pita', 'Hasábburgonya', 'Paradicsom', 'Uborka', 'Lilahagyma', 'Tzatziki'], img:'assets/images/pita-images/category.png' },
-        { name: 'Görög', ingredients: ['Bárány', 'Pita', 'Oliva', 'Paradicsom', 'Uborka', 'Tzatziki'], img:'assets/images/pita-images/greek.png' },
-        { name: 'Amerikai', ingredients: ['Marha', 'Pita', 'Sajt', 'Bacon', 'Mac and Cheese'], img:'assets/images/pita-images/american.png' },
+      // Define product "recipes" using the ProductVariant interface
+      const gyrosPitaVariants: ProductVariant[] = [
+        { name: 'Klasszikus',
+          ingredients: ['Csirke', 'Pita', 'Hasábburgonya', 'Paradicsom', 'Uborka', 'Lilahagyma', 'Tzatziki'],
+          img:'assets/images/pita-images/category.png',
+          tags: ['Klasszikus']
+        },
+        { name: 'Görög',
+          ingredients: ['Bárány', 'Pita', 'Hasábburgonya', 'Oliva', 'Paradicsom', 'Uborka', 'Tzatziki'],
+          img:'assets/images/pita-images/greek.png',
+          tags: ['Görög']
+        },
+        { name: 'Amerikai',
+          ingredients: ['Marha', 'Pita', 'Hasábburgonya', 'Sajt', 'Sajtos', 'Bacon'],
+          img:'assets/images/pita-images/american.png',
+          tags: ['Amerikai']
+        },
       ];
 
-      this.categoryPita.set(
-        generateGyros('Pita', gyrosPitaVariants, menu, { img: 'assets/images/pita-images/category.png' })
+      // Generate the final products and set the signal's value
+      this.products.set(
+        generateGyros('Gyros pita', gyrosPitaVariants, menu)
       );
     });
   }
@@ -36,5 +58,4 @@ export class PitaCategListComponent implements OnInit {
     this.cartService.addToCart(item);
     // You can add a visual confirmation here (e.g., a snackbar message)
   }
-
 }

@@ -1,35 +1,65 @@
-import { Component, signal, inject, OnInit } from '@angular/core';
-import { Product, Menu } from '@models/product';
+import { Component, signal, inject, OnInit, Input } from '@angular/core';
+import { Product, Menu, ProductVariant } from '@models/product'; // Import ProductVariant
 import { CartService } from '@core/cart-service';
-import { generateGyros, GyrosVariant } from '@controllers/pages/gyros-generator';
+import { generateGyros } from '@controllers/pages/gyros-generator';
 import { ItemCard } from '@app/components/item-card/item-card';
 import { LoaderService } from '@app/core/loader';
 import { CommonModule } from '@angular/common';
+import { ProductFilterPipe } from '@app/pipes/product-filter-pipe';
 
 @Component({
   selector: 'app-box-categ-list',
   standalone: true,
-  imports: [ItemCard, CommonModule],
+  imports: [ItemCard, CommonModule, ProductFilterPipe],
   templateUrl: './box-categ-list.html',
-  styleUrl: './box-categ-list.css',
+  styleUrls: ['./box-categ-list.css'],
 })
 export class BoxCategListComponent implements OnInit {
-  categoryBox = signal<Product[]>([]);
+  // This signal will hold the dynamically generated products.
+  products = signal<Product[]>([]);
   private cartService = inject(CartService);
   private loaderService = inject(LoaderService);
 
+  // Inputs for search term and filters
+  @Input() searchTerm: string = '';
+  @Input() filters: string[] = [];
+
+  // The old hardcoded 'products' array has been removed.
+
   ngOnInit(): void {
     this.loaderService.getMenu().subscribe(menu => {
-      const gyrosTálVariants: GyrosVariant[] = [
-        { name: 'Klasszikus', ingredients: ['Csirke', 'Tál', 'Hasábburgonya', 'Paradicsom', 'Uborka', 'Lilahagyma', 'Tzatziki'], img:'assets/images/box-images/category.png' },
-        { name: 'Görög', ingredients: ['Bárány', 'Hasábburgonya', 'Oliva', 'Paradicsom', 'Uborka', 'Tzatziki'], img:'assets/images/box-images/greek.png' },
-        { name: 'Amerikai', ingredients: ['Marha', 'Hasábburgonya', 'Sajt', 'Sajtos', 'Bacon', 'Mac and Cheese'], img:'assets/images/box-images/american.png' },
-        { name: 'Mexikói', ingredients: ['Csirke', 'Hasábburgonya', 'Csípős', 'Jalapeno', 'Vöröshagyma','Lilahagyma'], img:'assets/images/box-images/mexican.png' },
-        { name: 'Ázsiai', ingredients: ['Sertés', 'Hasábburgonya', 'Csípős', 'Rizs', 'Uborka', 'Káposzta', 'Fokhagymás'], img:'assets/images/box-images/asian.png' },
+      // Define product "recipes" using the ProductVariant interface
+      const gyrosTálVariants: ProductVariant[] = [
+        { name: 'Klasszikus',
+          ingredients: ['Csirke', 'Tál', 'Hasábburgonya', 'Paradicsom', 'Uborka', 'Lilahagyma', 'Tzatziki'],
+          img:'assets/images/box-images/category.png',
+          tags: ['Klasszikus']
+        },
+        { name: 'Görög',
+          ingredients: ['Bárány', 'Tál', 'Hasábburgonya', 'Oliva', 'Paradicsom', 'Uborka', 'Tzatziki'],
+          img:'assets/images/box-images/greek.png',
+          tags: ['Görög']
+        },
+        { name: 'Amerikai',
+          ingredients: ['Marha', 'Tál', 'Hasábburgonya', 'Sajt', 'Sajtos', 'Bacon'],
+          img:'assets/images/box-images/american.png',
+          tags: ['Amerikai'] 
+        },
+        { name: 'Mexikói',
+          ingredients: ['Csirke', 'Tál', 'Hasábburgonya', 'Csípős', 'Jalapeno', 'Vöröshagyma','Lilahagyma'],
+          img:'assets/images/box-images/mexican.png',
+          tags: ['Mexikói'] 
+        },
+        { name: 'Ázsiai',
+          ingredients: ['Sertés', 'Tál', 'Hasábburgonya', 'Csípős', 'Rizs', 'Uborka', 'Káposzta', 'Fokhagymás'],
+          img:'assets/images/box-images/asian.png',
+          tags: ['Ázsiai'] 
+        },
       ];
 
-      this.categoryBox.set(
-        generateGyros('Gyros tál', gyrosTálVariants, menu, { img: 'assets/images/box-images/category.png' })
+      // Generate the final products and set the signal's value
+      this.products.set(
+        generateGyros('Gyros tál', gyrosTálVariants, menu)
       );
     });
   }
