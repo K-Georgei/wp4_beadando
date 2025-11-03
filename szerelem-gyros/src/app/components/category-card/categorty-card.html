@@ -1,13 +1,15 @@
 <ng-content>
-   <mat-card class="example-card" appearance="filled">
-        <mat-card-header>
-            <mat-card-title-group class="title-group">
-                <mat-card-title>{{ item?.title }}</mat-card-title>
-            </mat-card-title-group>
-        </mat-card-header>
-        <img id="card-image" mat-card-image [src]="item?.img || fallbackImg" alt="{{ item?.title }}"/>
-        <mat-card-actions class="action-buttons">
-            <button mat-button (click)="onNavigate()">Vigyél oda!</button>
-        </mat-card-actions>
-   </mat-card>
+  <mat-card  appearance="filled">
+    <mat-card-header>       
+      <mat-card-title-group class="mb-3">
+        <mat-card-title>{{ item?.title }}</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+
+    <img id="card-image" mat-card-image [src]="item?.img || fallbackImg" alt="{{ item?.title }}" class="img-fluid  mx-auto d-block"/>
+
+    <mat-card-actions class="justify-content-center">
+      <button mat-button (click)="onNavigate()">Vigyél oda!</button>
+    </mat-card-actions>
+  </mat-card>
 </ng-content>

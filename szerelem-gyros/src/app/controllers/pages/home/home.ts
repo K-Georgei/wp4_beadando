@@ -8,11 +8,12 @@ import { BoxCategList } from '@components/box-categ-list/box-categ-list';
 import { PitaCategList } from '@components/pita-categ-list/pita-categ-list';
 import { TortillaCategList } from '@components/tortilla-categ-list/tortilla-categ-list';
 import { SearchAndFilter } from '@app/components/search-and-filter/search-and-filter';
+import { Landing } from '@app/components/landing/landing';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,CategoryCard,BoxCategList,PitaCategList,TortillaCategList,SearchAndFilter],
+  imports: [CommonModule,CategoryCard,BoxCategList,PitaCategList,TortillaCategList,SearchAndFilter,Landing],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

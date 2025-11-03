@@ -18,7 +18,9 @@ export class TortillaCategList {
       this.categoryTortilla.set(generateGyros('Gyros tortillában', [
         'Classic',
         'Extra szósz',
-        'Csípős'
+        'Csípős',
+        'Sajt',
+        'Bacon',
       ], { basePrice: 1500, img: 'assets/images/tortilla-images/category.png' }));
     }
 

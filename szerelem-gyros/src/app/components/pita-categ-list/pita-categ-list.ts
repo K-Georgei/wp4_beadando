@@ -18,7 +18,9 @@ export class PitaCategList {
       this.categoryPita.set(generateGyros('Gyros pitában', [
         'Classic',
         'Extra szósz',
-        'Csípős'
+        'Csípős',
+        'Sajt',
+        'Bacon',
       ], { basePrice: 1500, img: 'assets/images/pita-images/category.png' }));
     }
 

@@ -1,16 +1,20 @@
 <ng-content>
-   <mat-card class="item-card" appearance="filled">
+   <mat-card class="item-card d-flex flex-column h-100 mt-20px" appearance="filled">
         <mat-card-header>
             <mat-card-title-group class="title-group">
                 <mat-card-title>{{ item?.title }}</mat-card-title>
             </mat-card-title-group>
         </mat-card-header>
-        <img id="card-image" mat-card-image [src]="item?.img || fallbackImg" alt="{{ item?.title }}"/>
-        <mat-card-content>
+
+        <!-- responsive kép: mindig kitölti a cellát -->
+        <img id="card-image" mat-card-image [src]="item?.img || fallbackImg" alt="{{ item?.title }}" class="img-fluid w-100"/>
+
+        <mat-card-content class="grow">
             <p id="description">{{ item?.description }}</p>
-            <p id="price">{{ item?.price ? (item?.price + ' Ft') : ''}}</p>
+            <p id="price" class="text-end fw-bold">{{ item?.price ? (item?.price + ' Ft') : ''}}</p>
         </mat-card-content>
-        <mat-card-actions class="action-buttons">
+
+        <mat-card-actions class="action-buttons d-flex justify-content-end gap-2">
             <button mat-button (click)="onView()">Megtekint</button>
             <button mat-button (click)="onAdd()">Kosárba</button>
         </mat-card-actions>

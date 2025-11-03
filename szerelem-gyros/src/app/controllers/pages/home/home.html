@@ -1,32 +1,49 @@
-<div class="d-flex justify-content-center gap-3">
-   <app-category-card
+<div class="container my-3 py-4">
+  <app-landing></app-landing>
+  <div class="row justify-content-center g-3 text-center">
+    <h2>Kategóriák</h2>
+    <div class="col-12 col-sm-6 col-md-4">
+      <app-category-card
         [item]="categoryCardBox"
         [targetId]="'box-section'"
         (navigate)="scrollTo($event)">
-    </app-category-card>
-    <app-category-card
+      </app-category-card>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+      <app-category-card
         [item]="categoryCardPita"
         [targetId]="'pita-section'"
         (navigate)="scrollTo($event)">
-    </app-category-card>
-    <app-category-card
+      </app-category-card>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+      <app-category-card
         [item]="categoryCardTortilla"
         [targetId]="'tortilla-section'"
         (navigate)="scrollTo($event)">
-    </app-category-card>
-</div>
+      </app-category-card>
+    </div>
+  </div>
 
-<div>
-  <app-search-and-filter></app-search-and-filter>
-</div>
+  <div class="mt-4">
+    <app-search-and-filter></app-search-and-filter>
+  </div>
 
-<div> 
-  <h2>Gyros tálak</h2>
-  <app-box-categ-list id="box-section"></app-box-categ-list>
-  
-  <h2>Gyros pitában</h2>
-  <app-pita-categ-list id="pita-section"></app-pita-categ-list>
-  
-  <h2>Gyros tortillában</h2>
-  <app-tortilla-categ-list id="tortilla-section"></app-tortilla-categ-list>
+  <div class="container my-3">
+
+      <div class="category-section p-3 p-md-4 mb-4">
+        <h2 class="h3 text-center mb-3">Gyros tálak</h2>
+        <app-box-categ-list id="box-section"></app-box-categ-list>
+      </div>
+
+      <div class="category-section p-3 p-md-4 mb-4">
+        <h2 class="h3 text-center mb-3">Gyros pitában</h2>
+        <app-pita-categ-list id="pita-section"></app-pita-categ-list>
+      </div>
+
+      <div class="category-section p-3 p-md-4 mb-4">
+        <h2 class="h3 text-center mb-3">Gyros tortillában</h2>
+        <app-tortilla-categ-list id="tortilla-section"></app-tortilla-categ-list>
+      </div>
+  </div>
 </div>
