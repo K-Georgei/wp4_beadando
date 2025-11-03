@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Menu } from '@models/product';
-import { Product } from '@models/product';
+import { Menu, Product } from '@models/product';
 import { CategoryCard } from '@app/components/category-card/categorty-card';
 import { BoxCategListComponent } from '@components/box-categ-list/box-categ-list';
 import { PitaCategListComponent } from '@components/pita-categ-list/pita-categ-list';
@@ -13,34 +12,44 @@ import { Landing } from '@app/components/landing/landing';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,CategoryCard,BoxCategListComponent,PitaCategListComponent,TortillaCategListComponent,SearchAndFilter,Landing],
+  imports: [
+    CommonModule,
+    CategoryCard,
+    BoxCategListComponent,
+    PitaCategListComponent,
+    TortillaCategListComponent,
+    SearchAndFilter,
+    Landing,
+  ],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css'],
 })
-
 export class Home {
   menu = signal<Menu | null>(null);
-  
-  categoryCardBox: Product={
+
+  categoryCardBox: Product = {
     title: 'Gyros Tálak',
     img: 'assets/images/box-images/category.png',
-  }
-  categoryCardPita: Product={
+  };
+
+  categoryCardPita: Product = {
     title: 'Gyros Pitában',
     img: 'assets/images/pita-images/category.png',
-  }
-  categoryCardTortilla: Product={
+  };
+
+  categoryCardTortilla: Product = {
     title: 'Gyros Tortillában',
     img: 'assets/images/tortilla-images/category.png',
-  }
+  };
 
-  scrollTo(targetId?:string){
-    if(!targetId) return;
+  scrollTo(targetId?: string) {
+    if (!targetId) return;
     const el = document.getElementById(targetId);
-    if(!el) return;
-    const toolbarHeight = 64;
-    const top = el.getBoundingClientRect().top + window.scrollY - toolbarHeight;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
+    if (!el) {
+      console.warn('[Home] target element not found:', targetId);
+      return;
+    }
 
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }

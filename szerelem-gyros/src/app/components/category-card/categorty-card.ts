@@ -17,5 +17,8 @@ export class CategoryCard {
 
   @Output() navigate = new EventEmitter<string|undefined>();
 
-  onNavigate() { this.navigate.emit(this.targetId); }
+  onNavigate() {
+    console.log('[CategoryCard] onNavigate ->', this.targetId);
+    this.navigate.emit(this.targetId);
+  }
 }
