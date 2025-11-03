@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Import Angular Material modules needed for the template
@@ -31,6 +31,8 @@ import { Menu, Product, MenuItem } from '@models/product';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Panels implements OnInit {
+  @Output() priceChanged = new EventEmitter<number>();
+
   private loaderService = inject(LoaderService);
   private cartService = inject(CartService);
 
@@ -56,55 +58,49 @@ export class Panels implements OnInit {
     });
   }
 
+  onSelectionChange(): void {
+    this.priceChanged.emit(this.calculatePrice());
+  }
+
+  calculatePrice(): number {
+    const menu = this.menuData();
+    if (!menu) return 0;
+
+    let totalPrice = 0;
+
+    if (this.selectedMeat) {
+      totalPrice += this.selectedMeat.price;
+    }
+    if (this.selectedServing) {
+      totalPrice += this.selectedServing.price;
+    }
+
+    menu.ingredients.vegetables
+      .filter(veg => this.selectedVeggies[veg.name])
+      .forEach(veg => totalPrice += veg.price);
+
+    menu.ingredients.sauces
+      .filter(sauce => this.selectedSauces[sauce.name])
+      .forEach(sauce => totalPrice += sauce.price);
+
+    menu.sides
+      .filter(side => this.selectedSides[side.name])
+      .forEach(side => totalPrice += side.price);
+
+    return totalPrice;
+  }
+
   addToCart(): void {
     if (!this.selectedMeat || !this.selectedServing) {
       alert('Kérlek válassz húst és tálalást!');
       return;
     }
 
-    const menu = this.menuData();
-    if (!menu) return;
-
-    let totalPrice = 0;
-    const descriptionItems: string[] = [];
-
-    // Add meat
-    totalPrice += this.selectedMeat.price;
-    descriptionItems.push(this.selectedMeat.name);
-
-    // Add serving
-    totalPrice += this.selectedServing.price;
-    descriptionItems.push(this.selectedServing.name);
-
-    // Add veggies
-    menu.ingredients.vegetables
-      .filter(veg => this.selectedVeggies[veg.name])
-      .forEach(veg => {
-        totalPrice += veg.price;
-        descriptionItems.push(veg.name);
-      });
-
-    // Add sauces
-    menu.ingredients.sauces
-      .filter(sauce => this.selectedSauces[sauce.name])
-      .forEach(sauce => {
-        totalPrice += sauce.price;
-        descriptionItems.push(sauce.name);
-      });
-
-    // Add sides
-    menu.sides
-      .filter(side => this.selectedSides[side.name])
-      .forEach(side => {
-        totalPrice += side.price;
-        descriptionItems.push(side.name);
-      });
-
     const customGyros: Product = {
       id: Date.now(), // Simple unique ID
       title: 'Összeállított gyros',
-      description: descriptionItems.join(', '),
-      price: totalPrice,
+      description: 'Custom built gyros', // You can build a detailed description here
+      price: this.calculatePrice(),
       img: 'assets/img/products/gyros-tanyer.jpg'
     };
 

@@ -1,1 +1,5 @@
-<app-panels></app-panels>
+<div class="price-display text-end fs-4 fw-bold my-3">
+    Végösszeg: {{ totalPrice | number:'1.0-0' }} Ft
+</div>
+
+<app-panels (priceChanged)="onPriceChanged($event)"></app-panels>

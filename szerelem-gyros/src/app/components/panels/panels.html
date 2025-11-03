@@ -6,7 +6,7 @@
         <mat-panel-title>Húsok</mat-panel-title>
         <mat-panel-description>Egy jó gyros alapja mindig a hús.</mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-radio-group class="d-flex flex-column gap-2 pt-2" [(ngModel)]="selectedMeat">
+      <mat-radio-group class="d-flex flex-column gap-2 pt-2" [(ngModel)]="selectedMeat" (ngModelChange)="onSelectionChange()">
         @for (meat of data.ingredients.meats; track meat.name) {
           <mat-radio-button [value]="meat">{{ meat.name }} (+{{ meat.price }} Ft)</mat-radio-button>
         }
@@ -21,7 +21,7 @@
       </mat-expansion-panel-header>
       <div class="d-flex flex-column gap-2 pt-2">
         @for (veg of data.ingredients.vegetables; track veg.name) {
-          <mat-checkbox [(ngModel)]="selectedVeggies[veg.name]">{{ veg.name }} (+{{ veg.price }} Ft)</mat-checkbox>
+          <mat-checkbox [(ngModel)]="selectedVeggies[veg.name]" (ngModelChange)="onSelectionChange()">{{ veg.name }} (+{{ veg.price }} Ft)</mat-checkbox>
         }
       </div>
     </mat-expansion-panel>
@@ -34,7 +34,7 @@
       </mat-expansion-panel-header>
       <div class="d-flex flex-column gap-2 pt-2">
         @for (sauce of data.ingredients.sauces; track sauce.name) {
-          <mat-checkbox [(ngModel)]="selectedSauces[sauce.name]">{{ sauce.name }} (+{{ sauce.price }} Ft)</mat-checkbox>
+          <mat-checkbox [(ngModel)]="selectedSauces[sauce.name]" (ngModelChange)="onSelectionChange()">{{ sauce.name }} (+{{ sauce.price }} Ft)</mat-checkbox>
         }
       </div>
     </mat-expansion-panel>
@@ -45,7 +45,7 @@
         <mat-panel-title>Tálalás</mat-panel-title>
         <mat-panel-description>Hogyan kéred?</mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-radio-group class="d-flex flex-column gap-2 pt-2" [(ngModel)]="selectedServing">
+      <mat-radio-group class="d-flex flex-column gap-2 pt-2" [(ngModel)]="selectedServing" (ngModelChange)="onSelectionChange()">
         @for (serve of data.serving; track serve.name) {
           <mat-radio-button [value]="serve">{{ serve.name }} (+{{ serve.price }} Ft)</mat-radio-button>
         }
@@ -60,7 +60,7 @@
       </mat-expansion-panel-header>
       <section class="d-flex flex-column gap-2 pt-2">
         @for (side of data.sides; track side.name) {
-          <mat-checkbox [(ngModel)]="selectedSides[side.name]">{{ side.name }} (+{{ side.price }} Ft)</mat-checkbox>
+          <mat-checkbox [(ngModel)]="selectedSides[side.name]" (ngModelChange)="onSelectionChange()">{{ side.name }} (+{{ side.price }} Ft)</mat-checkbox>
         }
       </section>
     </mat-expansion-panel>

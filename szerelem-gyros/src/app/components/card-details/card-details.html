@@ -1,0 +1,39 @@
+    <div class="card-details-form p-3 border rounded" [formGroup]="form">
+      <h4 class="mb-3">Bankkártya adatok</h4>
+      <div class="d-flex flex-column gap-2">
+        <mat-form-field>
+          <mat-label>Kártyaszám</mat-label>
+          <input matInput formControlName="cardNumber" placeholder="0000 0000 0000 0000" required
+                 (input)="formatCardNumber($event)" maxlength="19">
+          @if(form.get('cardNumber')?.hasError('required')){
+            <mat-error>A kártyaszám kötelező.</mat-error>
+          }
+          @if(form.get('cardNumber')?.hasError('pattern')){
+            <mat-error>Érvénytelen kártyaszám (16 számjegy).</mat-error>
+          }
+        </mat-form-field>
+        <div class="d-flex gap-3">
+          <mat-form-field class="flex-grow-1">
+            <mat-label>Lejárati dátum</mat-label>
+            <input matInput formControlName="expiryDate" placeholder="MM/YY" required
+                   (input)="formatExpiryDate($event)" maxlength="5">
+            @if(form.get('expiryDate')?.hasError('required')){
+              <mat-error>A lejárati dátum kötelező.</mat-error>
+            }
+            @if(form.get('expiryDate')?.hasError('pattern')){
+              <mat-error>Érvénytelen formátum (MM/YY).</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="flex-grow-1">
+            <mat-label>CVC</mat-label>
+            <input matInput formControlName="cvc" placeholder="123" required maxlength="3">
+            @if(form.get('cvc')?.hasError('required')){
+              <mat-error>A CVC kód kötelező.</mat-error>
+            }
+            @if(form.get('cvc')?.hasError('pattern')){
+              <mat-error>Érvénytelen CVC (3 számjegy).</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
