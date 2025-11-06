@@ -12,12 +12,11 @@ import { CartService } from '@core/cart-service';
 import { CardDetailsComponent } from '@app/components/card-details/card-details';
 import { Subscription } from 'rxjs';
 
-// Custom validator to check for at least two words
 export function twoWordsValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value as string;
     if (!value) {
-      return null; // Let `required` validator handle empty values
+      return null; 
     }
     const words = value.trim().split(/\s+/);
     return words.length >= 2 ? null : { twoWords: true };
@@ -70,7 +69,6 @@ export class PayformComponent implements OnInit, OnDestroy {
   }
 
   constructor() {
-    // Disable card details initially since 'cash' is the default
     this.cardDetailsForm.disable();
   }
 
@@ -86,13 +84,11 @@ export class PayformComponent implements OnInit, OnDestroy {
     const cardDetailsGroup = this.cardDetailsForm;
 
     if (paymentMethod === 'transfer') {
-      // Enable the group and set validators
       cardDetailsGroup.enable();
       cardDetailsGroup.get('cardNumber')?.setValidators([Validators.required, Validators.pattern(/^\d{16}$/)]);
       cardDetailsGroup.get('expiryDate')?.setValidators([Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)]);
       cardDetailsGroup.get('cvc')?.setValidators([Validators.required, Validators.pattern(/^\d{3}$/)]);
     } else {
-      // For 'cash', clear validators, reset values, and disable the group
       cardDetailsGroup.reset();
       cardDetailsGroup.disable();
       cardDetailsGroup.get('cardNumber')?.clearValidators();
@@ -100,11 +96,9 @@ export class PayformComponent implements OnInit, OnDestroy {
       cardDetailsGroup.get('cvc')?.clearValidators();
     }
 
-    // Update the validity of the child and then the parent form
     cardDetailsGroup.updateValueAndValidity();
     this.paymentForm.updateValueAndValidity();
 
-    // Manually trigger change detection to update the view instantly
     this.cdr.detectChanges();
   }
 
@@ -119,7 +113,6 @@ export class PayformComponent implements OnInit, OnDestroy {
       this.cartService.clearCart();
       this.router.navigate(['/']);
     } else {
-      // Mark all fields as touched to display validation errors
       this.paymentForm.markAllAsTouched();
       alert('Kérjük, töltse ki az összes kötelező mezőt!');
     }

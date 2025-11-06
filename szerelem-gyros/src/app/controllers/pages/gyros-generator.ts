@@ -28,21 +28,19 @@ export function generateGyros(
       0
     );
 
-    // --- NEW LOGIC FOR COMBINING TAGS ---
     // Use a Set to automatically handle duplicates
     const combinedTags = new Set<string>();
 
-    // 1. Add all ingredients to the tags
+    //Add all ingredients to the tags
     variant.ingredients.forEach(ing => combinedTags.add(ing));
 
-    // 2. Add all custom-defined tags
+    //Add all custom-defined tags
     if (variant.tags) {
       variant.tags.forEach(tag => combinedTags.add(tag));
     }
-    // --- END OF NEW LOGIC ---
 
     return {
-      id: index + 1, // Simple ID generation
+      id: index + 1,
       title: title,
       description: `Összetevők: ${variant.ingredients.join(', ')}.`,
       price: price,

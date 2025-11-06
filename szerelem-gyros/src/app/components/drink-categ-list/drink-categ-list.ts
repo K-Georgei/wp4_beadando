@@ -29,11 +29,10 @@ export class DrinkCategListComponent implements OnInit {
       const toProduct = (item: MenuItem, tags: string[] = []): Product => ({
         title: item.name,
         price: item.price,
-        img: `assets/images/drink-images/${item.name.toLowerCase().replace(/ /g, '-')}.jpg`, // e.g., coca-cola.jpg
-        tags: [item.name, ...tags], // Tag with name and category
+        img: `assets/images/drink-images/${item.name.toLowerCase().replace(/ /g, '-')}.jpg`, // coca-cola.jpg
+        tags: [item.name, ...tags], 
       });
 
-      // Process both flat and carbonated drinks
       const flatDrinks = menu.drinks.flat.map(drink => toProduct(drink, ['Szénsavmentes', 'Üdítő']));
       const carbonatedDrinks = menu.drinks.carbonated.map(drink => toProduct(drink, ['Szénsavas', 'Üdítő']));
 

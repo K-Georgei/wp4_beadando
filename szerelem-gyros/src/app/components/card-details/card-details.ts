@@ -16,13 +16,10 @@ export class CardDetailsComponent {
 
   formatCardNumber(event: Event): void {
     const input = event.target as HTMLInputElement;
-    // 1. Get the raw digits from the input
     const rawValue = input.value.replace(/\D/g, '').substring(0, 16);
 
-    // 2. Set the raw digits as the actual form control value for validation
     this.form.get('cardNumber')?.setValue(rawValue);
 
-    // 3. Format the number with spaces for display purposes only
     const parts = rawValue.match(/.{1,4}/g);
     input.value = parts ? parts.join(' ') : rawValue;
   }

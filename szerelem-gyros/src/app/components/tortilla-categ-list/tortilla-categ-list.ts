@@ -44,7 +44,6 @@ export class TortillaCategListComponent implements OnInit {
       },
       ];
 
-      // Generate the final products and set the signal's value
       this.products.set(
         generateGyros('Gyros wrap', gyrosTortillaVariants, menu)
       );
@@ -53,6 +52,5 @@ export class TortillaCategListComponent implements OnInit {
 
   onAdd(item: Product) {
     this.cartService.addToCart(item);
-    // You can add a visual confirmation here (e.g., a snackbar message)
   }
 }

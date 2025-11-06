@@ -36,22 +36,17 @@ export class Panels implements OnInit {
   private loaderService = inject(LoaderService);
   private cartService = inject(CartService);
 
-  // A signal to hold our menu data. It starts as null.
   readonly menuData = signal<Menu | null>(null);
 
-  // Properties to hold the user's selections
   selectedMeat: MenuItem | null = null;
   selectedVeggies: { [key: string]: boolean } = {};
   selectedSauces: { [key: string]: boolean } = {};
   selectedServing: MenuItem | null = null;
   selectedSides: { [key: string]: boolean } = {};
 
-  // The ngOnInit lifecycle hook is a great place to fetch initial data.
   ngOnInit(): void {
     this.loaderService.getMenu().subscribe(data => {
-      // When the data arrives, we set the signal's value.
       this.menuData.set(data);
-      // Initialize selection objects
       data.ingredients.vegetables.forEach(veg => this.selectedVeggies[veg.name] = false);
       data.ingredients.sauces.forEach(sauce => this.selectedSauces[sauce.name] = false);
       data.sides.forEach(side => this.selectedSides[side.name] = false);
@@ -99,7 +94,7 @@ export class Panels implements OnInit {
     const customGyros: Product = {
       id: Date.now(), // Simple unique ID
       title: 'Összeállított gyros',
-      description: 'Custom built gyros', // You can build a detailed description here
+      description: 'Custom built gyros',
       price: this.calculatePrice(),
       img: 'assets/img/products/gyros-tanyer.jpg'
     };

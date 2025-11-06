@@ -14,13 +14,11 @@ export class CartService {
   private readonly CART_STORAGE_KEY = 'szerelem-gyros-cart';
   cart = signal<CartItem[]>(this.loadCartFromStorage()); 
 
-  // Readonly signals that components can subscribe to.
   cartItems = this.cart.asReadonly();
   totalItems = computed(() => this.cart().reduce((sum, item) => sum + item.quantity, 0));
   totalPrice = computed(() => this.cart().reduce((sum, item) => sum + (item.product.price! * item.quantity), 0));
 
   constructor() {
-    // Effect, ami minden változáskor elmenti a kosarat
     effect(() => {
       this.saveCartToStorage(this.cart());
     });

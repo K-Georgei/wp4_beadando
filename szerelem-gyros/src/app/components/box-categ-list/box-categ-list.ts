@@ -15,7 +15,6 @@ import { ProductFilterPipe } from '@app/pipes/product-filter-pipe';
   styleUrls: ['./box-categ-list.css'],
 })
 export class BoxCategListComponent implements OnInit {
-  // This signal will hold the dynamically generated products.
   products = signal<Product[]>([]);
   private cartService = inject(CartService);
   private loaderService = inject(LoaderService);
@@ -24,7 +23,6 @@ export class BoxCategListComponent implements OnInit {
   @Input() searchTerm: string = '';
   @Input() filters: string[] = [];
 
-  // The old hardcoded 'products' array has been removed.
 
   ngOnInit(): void {
     this.loaderService.getMenu().subscribe(menu => {
@@ -57,7 +55,6 @@ export class BoxCategListComponent implements OnInit {
         },
       ];
 
-      // Generate the final products and set the signal's value
       this.products.set(
         generateGyros('Gyros tál', gyrosTálVariants, menu)
       );
@@ -66,6 +63,5 @@ export class BoxCategListComponent implements OnInit {
 
   onAdd(item: Product) {
     this.cartService.addToCart(item);
-    // You can add a visual confirmation here (e.g., a snackbar message)
   }
 }

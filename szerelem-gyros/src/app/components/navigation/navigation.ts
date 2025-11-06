@@ -20,7 +20,6 @@ export class Navigation {
   currentPage: string = 'Oldal';
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    // initial
     this.currentPage = this.getTitleFromSnapshot(this.activatedRoute.snapshot) || 'Oldal';
 
     // frissítés navigációnál

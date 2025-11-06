@@ -2,7 +2,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-// Import Angular Material Modules
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
@@ -25,7 +24,6 @@ import { MatDivider } from '@angular/material/divider';
   styleUrls: ['./search-and-filter.css'],
 })
 export class SearchAndFilter {
-  // Emits the current state whenever it changes
   @Output() filterChange = new EventEmitter<{
     searchTerm: string;
     filters: string[];

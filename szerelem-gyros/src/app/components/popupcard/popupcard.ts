@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
-  MatDialogRef,
   MAT_DIALOG_DATA,
   MatDialogModule,
   MatDialogTitle,
