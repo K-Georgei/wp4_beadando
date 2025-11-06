@@ -7,6 +7,7 @@ import { LoaderService } from '@app/core/loader';
 import { CommonModule } from '@angular/common';
 import { ProductFilterPipe } from '@app/pipes/product-filter-pipe';
 
+
 @Component({
   selector: 'app-pita-categ-list',
   standalone: true,
